@@ -74,10 +74,10 @@ jobs:
       run: |
         cd RaspberryPi/frontend
         npm run build
-      env:
-        VITE_API_URL: https://api.wattwitness.com
-        VITE_APP_NAME: WattWitness
-        VITE_ENVIRONMENT: production
+             env:
+         VITE_API_URL: https://wattwitness-backend.railway.app
+         VITE_APP_NAME: WattWitness
+         VITE_ENVIRONMENT: production
     
     - name: Deploy to Vercel
       uses: amondnet/vercel-action@v20
