@@ -1,22 +1,22 @@
 # 🚀 Deploy WattWitness RIGHT NOW (5 minutes)
 
-## Step 1: Deploy Backend to Railway (2 minutes)
+## Step 1: Deploy Backend to Render (2 minutes)
 
-1. **Sign up at Railway**: Go to [railway.app](https://railway.app) and create account
+1. **Sign up at Render**: Go to [render.com](https://render.com) and create account
 2. **Deploy from GitHub**: 
-   - Click "Deploy from GitHub"
+   - Click "New +" → "Web Service"
    - Select your `Watt-Witness` repository
    - Choose `RaspberryPi/backend` as root directory
-   - Click "Deploy"
+   - Click "Create Web Service"
 
-3. **Set Environment Variables** in Railway dashboard:
+3. **Set Environment Variables** in Render dashboard:
    ```env
    DATABASE_URL=postgresql://user:pass@host:port/db
    SECRET_KEY=your-secret-key-here
    FRONTEND_URL=https://wattwitness-frontend.vercel.app
    ```
 
-4. **Get Your API URL**: Railway will give you: `https://wattwitness-backend.railway.app`
+4. **Get Your API URL**: Render will give you: `https://wattwitness-backend.onrender.com`
 
 ## Step 2: Deploy Frontend to Vercel (2 minutes)
 
@@ -29,7 +29,7 @@
 
 3. **Set Environment Variables** in Vercel dashboard:
    ```env
-   VITE_API_URL=https://your-actual-railway-url.railway.app
+   VITE_API_URL=https://your-actual-render-url.onrender.com
    VITE_APP_NAME=WattWitness
    VITE_ENVIRONMENT=production
    ```
@@ -41,25 +41,23 @@
 1. **Create Supabase Account**: Go to [supabase.com](https://supabase.com)
 2. **Create New Project**: Get the connection string
 3. **Run SQL**: Copy-paste the contents of `RaspberryPi/backend/setup-production-db.sql`
-4. **Update Railway**: Add the database URL to Railway environment variables
+4. **Update Render**: Add the database URL to Render environment variables
 
 ## 🎉 DONE! Your WattWitness is now LIVE!
 
 - **Frontend**: https://wattwitness-frontend.vercel.app
-- **Backend**: https://wattwitness-backend.railway.app
+- **Backend**: https://wattwitness-backend.onrender.com
 - **Database**: Managed by Supabase
 
 ## 🔄 Alternative: One-Command Deploy
 
 If you have CLI tools installed:
 ```bash
-# Deploy backend
-cd RaspberryPi/backend
-railway login
-railway up
+# Deploy backend (manual via web interface)
+# Go to render.com and deploy from GitHub
 
 # Deploy frontend
-cd ../frontend
+cd RaspberryPi/frontend
 vercel --prod
 ```
 

@@ -75,7 +75,7 @@ jobs:
         cd RaspberryPi/frontend
         npm run build
              env:
-         VITE_API_URL: https://wattwitness-backend.railway.app
+         VITE_API_URL: https://wattwitness-backend.onrender.com
          VITE_APP_NAME: WattWitness
          VITE_ENVIRONMENT: production
     
@@ -97,21 +97,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
+    - name: Deploy to Render
+      uses: johnbeynon/render-deploy-action@v0.0.8
       with:
-        node-version: '18'
-    
-    - name: Install Railway CLI
-      run: npm install -g @railway/cli
-    
-    - name: Deploy to Railway
-      run: |
-        cd RaspberryPi/backend
-        railway login --token ${{ secrets.RAILWAY_TOKEN }}
-        railway up
-      env:
-        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        service-id: ${{ secrets.RENDER_SERVICE_ID }}
+        api-key: ${{ secrets.RENDER_API_KEY }}
         
   notify:
     needs: [deploy-frontend, deploy-backend]

@@ -119,24 +119,12 @@ deploy_frontend() {
     print_status "Frontend deployed to Vercel"
 }
 
-# Deploy to Railway (Backend)
+# Deploy to Render (Backend)
 deploy_backend() {
-    print_info "Deploying backend to Railway..."
-    
-    # Check if Railway CLI is installed
-    if ! command -v railway &> /dev/null; then
-        print_warning "Railway CLI not found. Installing..."
-        npm install -g @railway/cli
-    fi
-    
-    cd RaspberryPi/backend
-    
-    # Deploy to Railway
-    railway up
-    
-    print_status "Backend deployed to Railway"
-    
-    cd ../..
+    print_info "Deploying backend to Render..."
+    print_info "Please deploy manually at render.com or set up API key for automation"
+    print_info "Your backend is configured for: https://wattwitness-backend.onrender.com"
+    print_status "Backend configuration ready for Render"
 }
 
 # Update GitHub repository
@@ -181,7 +169,7 @@ main() {
     echo ""
     echo "Your WattWitness platform is now live at:"
     echo "🌐 Frontend: https://wattwitness-frontend.vercel.app"
-    echo "🔗 Backend API: https://wattwitness-backend.railway.app"
+    echo "🔗 Backend API: https://wattwitness-backend.onrender.com"
     echo "📚 GitHub: https://github.com/Manthanbhanushali010/Watt-Witness"
     echo ""
     echo "🔧 Next steps:"
